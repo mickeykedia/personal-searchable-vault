@@ -23,12 +23,16 @@ def add_data(data_type):
         return json_response["_id"]
 
 
-@app.route("/<data_type>/search")
-def search_data(data_type):
+
+@app.route("/search")
+def search_data():
     # @TODO Check for the data types we expect
     # @TODO Do try catch outside request and handle gracefully using bootstrap
     if 'query' in request.args:
-        r = requests.post('http://127.0.0.1:9200/'+INDEX_NAME+'/'+data_type + '/_search?q='+request.args['query'])
+        if 'data_type' in request.args:
+            r = requests.post('http://127.0.0.1:9200/'+INDEX_NAME+'/'+data_type + '/_search?q='+request.args['query'])
+        else:
+            r = requests.post('http://127.0.0.1:9200/'+INDEX_NAME+'/_search?q='+request.args['query'])
         response_dict = json.loads(r.text)
         return r.text
     else:

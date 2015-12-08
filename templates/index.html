@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,10 +24,200 @@
             <p>With search functionality</p>
         </div>
 
-        <div class="input-group">
-            <span class="input-group-addon" id="basic-addon1"> GO </span>
-            <input type="text" class="form-control" id="usr">
+        <form action="/search" method="get">
+            <div class="input-group">
+                <input type="text" name = "query" class="form-control" placeholder="Search term">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+            </div>
+        </form>
+
+
+        <div class="buffer">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#home" aria-controls="link" role="tab" data-toggle="tab">Link</a>
+                </li>
+                <li role="presentation">
+                    <a href="#note" aria-controls="profile" role="tab" data-toggle="tab">Note</a>
+                </li>
+                <li role="presentation">
+                    <a href="#book" aria-controls="messages" role="tab" data-toggle="tab">Book</a>
+                </li>
+                <li role="presentation">
+                    <a href="#place" aria-controls="settings" role="tab" data-toggle="tab">Place</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+
+                <!-- LINK PANE -->
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="row buffer">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Link </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="link/add" method="post">
+                                        <div class="form-group">
+                                            <input type="url" name = "link" class="form-control" placeholder="Link">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "comment" class="form-control" placeholder="Comment">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "tags" class="form-control" placeholder="Tags">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- NOTE PANE -->
+                <div role="tabpanel" class="tab-pane" id="note">
+                    <div class="row buffer">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Note </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="link/add" method="post">
+                                        <div class="form-group">
+                                            <textarea type="text" name = "note" class="form-control" placeholder="Note"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "comment" class="form-control" placeholder="Comment">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "tags" class="form-control" placeholder="Tags">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- BOOK PANE -->
+                <div role="tabpanel" class="tab-pane" id="book">
+                    <div class="row buffer">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Book </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="link/add" method="post">
+                                        <div class="form-group">
+                                            <input type="text" name = "name" class="form-control" placeholder="Book Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "author" class="form-control" placeholder="Author Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "year" class="form-control" placeholder="Year of book">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "comment" class="form-control" placeholder="Comment">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "tags" class="form-control" placeholder="Tags">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- PLACE PANE -->
+                <div role="tabpanel" class="tab-pane" id="place">
+                    <div class="row buffer">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"> Place </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form action="link/add" method="post">
+                                        <div class="form-group">
+                                            <input type="text" name = "name" class="form-control" placeholder="Name of the place">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="url" name = "link" class="form-control" placeholder="Link (if any)">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "comment" class="form-control" placeholder="Comment">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name = "tags" class="form-control" placeholder="Tags">
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
+        <div class="row buffer">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Link </h3>
+                    </div>
+                    <div class="panel-body">
+                        Add Link
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Note </h3>
+                    </div>
+                    <div class="panel-body">
+                        Add Note
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Note </h3>
+                    </div>
+                    <div class="panel-body">
+                        Add Note
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"> Note </h3>
+                    </div>
+                    <div class="panel-body">
+                        Add Note
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
