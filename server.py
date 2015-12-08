@@ -23,6 +23,15 @@ def add_data(data_type):
         return json_response["_id"]
 
 
+def parse_search_result(response_dict):
+    if response_dict['hits']['total'] > 0:
+        results = response_dict['hits']['hits']
+
+        return render_template('index.html', res=results)
+    else:
+        return "NAY"
+
+
 
 @app.route("/search")
 def search_data():
@@ -34,7 +43,7 @@ def search_data():
         else:
             r = requests.post('http://127.0.0.1:9200/'+INDEX_NAME+'/_search?q='+request.args['query'])
         response_dict = json.loads(r.text)
-        return r.text
+        return parse_search_result(response_dict)
     else:
         # return a reasonable response
         return json.dumps(request.args)

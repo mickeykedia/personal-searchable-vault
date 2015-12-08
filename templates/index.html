@@ -34,7 +34,15 @@
         </form>
 
 
-        <div class="buffer">
+        <ul>
+            {% for item in res %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        <!-- Maybe hide this when search results are passed -->
+        <!-- Tab panes -->
+        {%- if not res -%}
+            <div class="buffer">
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -50,9 +58,9 @@
                 <li role="presentation">
                     <a href="#place" aria-controls="settings" role="tab" data-toggle="tab">Place</a>
                 </li>
+                <!-- ADD MORE PANES FOR OTHER DATA TYPES AS DEFINED IN ELASTIC SEARCH -->
             </ul>
 
-            <!-- Tab panes -->
             <div class="tab-content">
 
                 <!-- LINK PANE -->
@@ -174,48 +182,7 @@
                 </div>
             </div>
         </div>
-        <div class="row buffer">
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Link </h3>
-                    </div>
-                    <div class="panel-body">
-                        Add Link
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Note </h3>
-                    </div>
-                    <div class="panel-body">
-                        Add Note
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Note </h3>
-                    </div>
-                    <div class="panel-body">
-                        Add Note
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"> Note </h3>
-                    </div>
-                    <div class="panel-body">
-                        Add Note
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% endif %}
 
 
     </div>
