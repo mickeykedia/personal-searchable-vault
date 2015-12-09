@@ -32,6 +32,12 @@
                 </span>
             </div>
         </form>
+        {%- if no_res -%}
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong> No Results found matching your query </strong>
+            </div>
+        {% endif %}
 
 
         {%- if add_res -%}

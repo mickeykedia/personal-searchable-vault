@@ -139,7 +139,12 @@ def search_data():
     # @TODO Do try catch outside request and handle gracefully using bootstrap
     if 'query' in request.args:
         # calling the search api where the thread local request object is still available.
-        return render_template('index.html', res=json.loads(search_data_api()))
+        search_result = json.loads(search_data_api())
+        if search_result:
+            return render_template('index.html', res=search_result)
+        else:
+            return render_template('index.html', no_res="No Result")
+
     else:
         # return a reasonable response
         return json.dumps(request.args)
