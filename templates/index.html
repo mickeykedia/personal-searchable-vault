@@ -34,11 +34,23 @@
         </form>
 
 
-        <ul>
-            {% for item in res %}
-                <li>{{ item }}</li>
-            {% endfor %}
-        </ul>
+        {% for item in res %}
+
+            <div class="panel panel-default buffer">
+              <div class="panel-heading">{{ item._type }}</div>
+              <ul class="list-group">
+                  {%  for val in item %}
+                      {%- if val == '_source' -%}
+                          {%  for v in item[val] %}
+                              <li class="list-group-item"><span class="badge">{{ v }}</span>{{ item[val][v] }}</li>
+                          {% endfor %}
+                      {% endif %}
+                  {% endfor %}
+                  <li class="list-group-item"><span class="badge">Score</span>{{ item._score }}</li>
+              </ul>
+            </div>
+        {% endfor %}
+
         <!-- Maybe hide this when search results are passed -->
         <!-- Tab panes -->
         {%- if not res -%}

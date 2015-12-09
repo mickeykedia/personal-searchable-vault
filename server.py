@@ -24,13 +24,18 @@ def add_data(data_type):
 
 
 def parse_search_result(response_dict):
+    """
+
+    :param response_dict:
+    :return:
+    """
     if response_dict['hits']['total'] > 0:
         results = response_dict['hits']['hits']
 
         return render_template('index.html', res=results)
     else:
+        # Return variable for setting a no result response
         return "NAY"
-
 
 
 @app.route("/search")
